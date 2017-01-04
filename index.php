@@ -31,8 +31,14 @@ $app->group("/api", function() use ($app){
       $app->get("/say-something/:something", function($something){
         echo "Hello, " . $something;
       });
+
+      $app->get("/send-me-to-hello/", function() use ($app){
+        $app->redirect("/hello/Maria");
+      });
   });
 });
+
+
 
 $app->run();
 
