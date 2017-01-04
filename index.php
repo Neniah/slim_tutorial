@@ -23,5 +23,18 @@ $app->get("/pruebas(/:uno/:dos)", 'pruebaMiddle', 'pruebaTwo', function($uno=NUL
   "dos" => "[0-9]*"
 ));
 
+$app->group("/api", function() use ($app){
+  $app->group("/example", function() use ($app){
+      $app->get("/hello/:name", function($name){
+        echo "Hello " . $name;
+      });
+      $app->get("/say-something/:something", function($something){
+        echo "Hello, " . $something;
+      });
+  });
+});
+
 $app->run();
+
+
 ?>
